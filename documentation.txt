@@ -1,0 +1,30 @@
+May 15, 2022
+I think I've approached dropdowns incorrectly because I did not fully understand the workings of absolute and relative positioning. This time, I will try to apply my learnings in positioning to do the dropdowns.
+
+Another concern is the bleeding of the image outside the box. I am thinking to use absolute positioning. Grid is also possible, but it might be an overkill?
+
+Another concern is the positioning of the background image on the landing area?
+
+I need to finish this in 2 days.
+
+I am trying to find the measurements using Figma, doing some makeshift ruler.
+    Landing:
+        width: 1110px
+        top margin : 60px
+        header height: 48px
+        bottom margin: 154px
+        radius: 100px
+
+May 16, 2022
+    It took me some time to find a good arrow for dropdown. I can't believe that arrow does not exist naturally.
+
+    Yesterday, I learned the issue of margin collapsing, and the solutions for that.
+
+May 17, 2022
+    Today, the main challenge was the background image.
+
+    The centering was also kind of time-consuming. I should be able to remember this always.
+
+    The arrows for dropdowns have always been provided. I just did not check it. Wow.
+
+    Try grid with auto value on the column.
