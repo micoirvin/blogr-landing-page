@@ -1,3 +1,8 @@
+:root {
+    --scalerpx: calc((100vw - 375px) / 1065);
+    --scalerrem: calc((100vw - 375rem/16) * 16 / 1065);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -16,18 +21,24 @@ body * {
     border: 0.1px solid transparent;
 }
 
-@media only screen and (min-width: 990px) {
+#intro {
+    color: white;
+    padding-bottom: 160px;
+    background-image: linear-gradient(to bottom, #FF8F70, #FF3D54);
+    border-radius: 0 0 0 100px;
+    overflow: hidden;
+}
+
+@media only screen and (min-width: 992px) {
     body {
         text-align: left;
     }
 }
 
-#intro {
-    color: white;
-    padding-bottom: 160px;
-    background-image: linear-gradient(to right, #FF8F70, #FF3D54);
-    border-radius: 0 0 0 100px;
-    overflow: hidden;
+@media only screen and (min-width: 600px) {
+    #intro {
+        background-image: linear-gradient(to right, #FF8F70, #FF3D54);
+    }
 }
 
 #intro-bg {
@@ -39,24 +50,50 @@ body * {
 }
 
 #intro-bg img {
-    top: 24px;
+    height: calc(929px + var(--scalerpx)*1301);
+    top: calc(200px - var(--scalerpx)*176);
+    right: calc(108px - var(--scalerpx)*108);
 }
 
 .cntner {
-    max-width: 1100px;
+    max-width: 1148px;
+    padding: 0 24px;
     margin: 0 auto;
 }
 
 header {
-    min-height: 48px;
-    margin-top: 60px;
+    margin-top: 54px;
     margin-bottom: 120px;
     display: flex;
     align-items: center;
 }
 
 #logo {
+    height: calc(32px + var(--scalerpx)*8);
     margin-right: 64px;
+}
+
+#logo img {
+    height: 100%;
+}
+
+nav {
+    display: none;
+}
+
+#rght-nav {
+    display: none;
+}
+
+@media only screen and (min-width: 992px) {
+    nav {
+        display: block;
+    }
+
+    #rght-nav {
+        display: block;
+        margin-left: auto;
+    }
 }
 
 header ul {
@@ -78,11 +115,10 @@ a {
 a.big-btn {
     display: block;
     min-width: 140px;
-    padding: 14px;
+    padding: 13px;
     border-radius: 100px;
     border: 1.5px solid white;
     text-align: center;
-    text-decoration: none;
     color: white;
     font-weight: 700;
 }
@@ -92,37 +128,31 @@ a.big-btn.solid {
     color: #FF525D;
 }
 
-#rght-nav {
-    margin-left: auto;
-}
 
 main {
     text-align: center;
 }
 
 main p {
-    font-size: 1.3rem;
+    font-size: calc(1rem + var(--scalerrem)*0.3);
 }
 
 h1 {
-    font-size: 3.6rem;
+    font-size: calc(2.3rem + var(--scalerrem)*1.3);
 }
 
 h1, h2, h3, h4 {
     margin-bottom: 24px;
-    line-height: 100%;
-}
-
-h1, h2 {
-    text-align: center;
+    line-height: 120%;
+    /* border: 0.1px solid violet; */
 }
 
 h2 {
-    font-size: 2.2rem;
+    font-size: calc(1.7rem + var(--scalerrem)*0.7);
 }
 
 h3 {
-    font-size: 1.6rem;
+    font-size: calc(1.3rem + var(--scalerrem)*0.3);
 }
 
 p {
@@ -137,41 +167,109 @@ p {
     justify-content: center;
 }
 
+/****************** Sections part. Trying a grid layout. *************************/
+
 #sect1 {
-    padding-top: 160px;
+    padding-top: calc(20px + var(--scalerpx)*50);
+    overflow: hidden;
 }
 
 :is(#sect1, #sect3) :is(h1, h2, h3, h4) {
     color: 	#1F3F5B;
 }
 
-.text-art-wrap {
-    display: flex;
-    gap: 80px;
+#sect1 h2 {
+    margin-top: 90px;
+    margin-bottom: 48px;
+    /* 48 to 120 */
+}
+
+.text-art-wrap div {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .text {
-    width: 50%;
-}
-
-#sect1 h2 {
-    margin-bottom: 120px;
-}
-
-:is(#sect1, #sect2, #sect3) p {
-    margin-bottom: 80px;
+    /* border: 0.1px solid blue; */
+    max-width: 600px;
 }
 
 .art-img {
-    display: flex;
-    align-items: center;
+    max-width: 400px;
+    /* border: 0.1px solid blue; */
+}
+
+:is(#sect1, #sect2, #sect3) p {
+    margin-bottom: 48px;
+    /* 48 to 80 */
+}
+
+.art-img {
+    margin-bottom: 48px;
+    /* 48 to 80 */
 }
 
 .art-img img {
-    position: absolute;
+    width: 100%;
+
+/* .art-img.pc img {
+    position: absolute
+} */
+
 }
 
+.art-img.pc {
+    display: none;
+}
 
+@media only screen and (min-width: 992px) {
+
+    #sect1 h2 {
+        text-align: center;
+    }
+
+    .art-img.mob {
+        display: none;
+    }
+
+    .text-art-wrap {
+        border: 0.1px solid black;
+        display: grid;
+        grid-template-columns: 50% 120px 1fr;
+    }
+
+    .text {
+        border: 0.1px solid black;
+    }
+
+    .art-img.pc {
+        border: 0.1px solid black;
+        display: block;
+        grid-column: 3 / 5;
+    }
+
+
+
+
+    /* .text-art-wrap {
+        gap: 80px;
+        justify-content: left;
+    }
+    
+    .text {
+        width: 50%;
+        order: 1;
+    }
+
+    .art-img {
+        order: 2;
+    }
+
+    #sect1 .art-img {
+        bottom: 80px;
+    } */
+
+}
 
 
 .attribution { font-size: 11px; text-align: center; }
