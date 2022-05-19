@@ -139,6 +139,7 @@ main p {
 
 h1 {
     font-size: calc(2.3rem + var(--scalerrem)*1.3);
+    /* font-size: max(2.3rem, 4vw); */
 }
 
 h1, h2, h3, h4 {
@@ -169,18 +170,27 @@ p {
 
 /****************** Sections part. Trying a grid layout. *************************/
 
-#sect1 {
-    padding-top: calc(20px + var(--scalerpx)*50);
-    overflow: hidden;
-}
-
 :is(#sect1, #sect3) :is(h1, h2, h3, h4) {
     color: 	#1F3F5B;
 }
 
+:is(#sect1, #sect2, #sect3) p {
+    margin-bottom: min(48px + var(--scalerpx)*32, 80px);
+    /* 48 to 80 */
+}
+
+#sect1 {
+    padding-top: min(110px + var(--scalerpx)*50, 160px);
+    overflow: hidden;
+    padding-bottom: 260px;
+}
+
+#sect1 .text p:last-of-type {
+    margin-bottom: 0;
+}
+
 #sect1 h2 {
-    margin-top: 90px;
-    margin-bottom: 48px;
+    margin-bottom: min(48px + var(--scalerpx)*72, 120px);
     /* 48 to 120 */
 }
 
@@ -199,10 +209,6 @@ p {
     /* border: 0.1px solid blue; */
 }
 
-:is(#sect1, #sect2, #sect3) p {
-    margin-bottom: 48px;
-    /* 48 to 80 */
-}
 
 .art-img {
     margin-bottom: 48px;
@@ -211,18 +217,24 @@ p {
 
 .art-img img {
     width: 100%;
+}
 
 /* .art-img.pc img {
     position: absolute
 } */
 
-}
-
 .art-img.pc {
     display: none;
 }
 
+/* .cntner {
+    border: 0.1px solid black;
+}  */
+
 @media only screen and (min-width: 992px) {
+    #sect1 {
+        border: 0.1px solid black;
+    }
 
     #sect1 h2 {
         text-align: center;
@@ -235,17 +247,27 @@ p {
     .text-art-wrap {
         border: 0.1px solid black;
         display: grid;
-        grid-template-columns: 50% 120px 1fr;
+        grid-template-columns: 50% clamp(70px, 7vw, 100px) 1fr;
     }
 
     .text {
-        border: 0.1px solid black;
+        /* border: 0.1px solid black; */
+        grid-column: 1;
     }
 
     .art-img.pc {
-        border: 0.1px solid black;
+        /* border: 0.1px solid black; */
         display: block;
-        grid-column: 3 / 5;
+        grid-column: 3;
+        width: 100%;
+    }
+
+    .art-img.pc img {
+        position: absolute;
+        /* width: clamp(600px, 700px + 0.5*(100vw - 1240px), 800px); */
+        width: clamp(550px, 56vw, 800px);
+        height: auto;
+        top: clamp(-240px, -16.7vw, -160px);
     }
 
 

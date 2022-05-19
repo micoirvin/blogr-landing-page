@@ -35,3 +35,7 @@ May 18, 2022
     I also dedicated some time doing some measurements to properly place the background image and to create some sort of fluid typography.
 
     My main tool is the function calc().
+
+
+May 19, 2022
+    Need to fix font size. Need to fix the positioning of the intro bg.
