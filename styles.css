@@ -15,17 +15,134 @@ body {
     font-weight: 300;
     color: #4B5862;
     text-align: center;
+    font-size: max(1rem, 1.11vw);
 }
 
 body * {
     border: 0.1px solid transparent;
 }
 
+/* **************** FONT SIZING ******************** */
+
+
+h1 {
+    font-size: 2em;
+    /* font-size: clamp(4vw, 3.6em, clamp(6vw, 2.5em, 9.5vw)); */
+    /* From 0 to 421px = 9.5vw = {0 to 40px}
+    From 421px to 667px = 2.5em = {40px}
+    From 667px to 960px = 6vw = {40px to 57.6px}
+    From 960px to 1440px = 3.6em = {57.6px}
+    From 1440px to inf = 4vw = {57.6px to inf}
+    */
+    /* If 1em = 32px (big):
+        From 0 to 842px = 9.5vw = {0 to 80px}
+        From 842px to 1333px = 2.5em = {80px}
+        From 1333px to 1920px = 6vw = {80px to 115.2px}
+        From 1920px to 2880px = 3.6em = {115.2px}
+        From 2880px to inf = 4vw = {115.2px to inf}
+    
+    */
+    /* font-size: clamp(3.6em + 1.8/90 * (100vw - 90em), 3.6em, 2em + 1.6/42*[100vw - 20em]); */
+    /* font-size: 32px; */
+    /* font-size: clamp(3.6em+1.8/90*[100vw - 90em], 3.6em, (42*(100vw))); */
+
+    /* font-size: calc(2em + 1.6/42*(100vw - 20em)); */
+    /* font-size: 2em; */
+    /* 
+    */
+    /* font-size: clamp(1.5em + 2vw, 2em, 1.25em + 3vw); */
+    /* font-size: 32px; */
+    /* font-size: calc(1.6em + 1vw); */
+    /* font-size: 32px; */
+} 
+/* wrong codes*/
+
+h1 {
+    font-size: clamp(2em, 4.68vw + 1em, 2.521em);
+    /* Assuming that the font zoom settings are not too high, this is good. If you think the font zoom settings of the phone is high, then reduce the slope. */
+}
+
+/* @media only screen and (min-width: 360px){
+    h1 {
+        font-size: clamp(2em, 1.3em + 2.8vw, 2.7em);
+    }
+    h1 {
+        font-size: clamp(2em, 1.427em + 2.545vw, 2.7em);
+        font-size: 40px;
+    }
+} */
+
+/* @media only screen and (min-width: 800px){
+    h1 {
+        font-size: clamp(2.7em, 2.25vw + 1.575em, max(3.6em, 4vw));
+    }
+} */
+
+@media only screen and (min-width: 520px) {
+    h1 {
+        font-size: clamp(2.521em, 2vw + 1.85em, 3em);
+    }
+}
+
+@media only screen and (min-width: 920px) {
+    h1 {
+        font-size: clamp(3em, 1.84vw + 1.94em, 3.6em);
+    }
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: max(0.4em, 24px);
+    line-height: 120%;
+    /* border: 0.1px solid violet; */
+}
+
+h2 {
+    font-size: clamp(2.67vw, 2.4em, clamp(4vw, 1.67em, 6.33vw));
+    /* From 0 to 400px = 10vw = {0 to 40px}
+        From 400px to 667px = 2.5em = {40px}
+        From 667px to 960px = 6vw = {40px to 57.6px}
+        From 960px to 1440px = 3.6em = {57.6px}
+        From 1440px to inf = 4vw = {57.6px to inf}
+        UPDATE this.
+    */
+}
+
+h3 {
+    font-size: clamp(1.78vw, 1.6em, max(1.2em, 2.67vw));
+    /* font-size: clamp(1.78vw, 1.6em, clamp(2.67vw, 1.11em, 4.22vw)); */
+    /* From 0 to 400px = 10vw = {0 to 40px}
+        From 400px to 667px = 2.5em = {40px}
+        From 667px to 960px = 6vw = {40px to 57.6px}
+        From 960px to 1440px = 3.6em = {57.6px}
+        From 1440px to inf = 4vw = {57.6px to inf}
+        UPDATE this.
+    */
+}
+
+p {
+    margin-bottom: 2em;
+    /* letter-spacing: 0.6px; */
+    letter-spacing: 0.0375em;
+    line-height: 150%;
+    /* border: 0.1px solid black; */
+}
+
+main p {
+    /* font-size: calc(1rem + var(--scalerrem)*0.3); */
+    font-size: clamp(1em, 5.5vw, 1.3em);
+    letter-spacing: 0.03em;
+    
+}
+
+
+/* **************** INTRO LAYOUT ****************** */
+
 #intro {
     color: white;
-    padding-bottom: 160px;
+    padding-top: 3.5em;
+    padding-bottom: 9.8em;
     background-image: linear-gradient(to bottom, #FF8F70, #FF3D54);
-    border-radius: 0 0 0 100px;
+    border-radius: 0 0 0 7em;
     overflow: hidden;
 }
 
@@ -45,32 +162,44 @@ body * {
     width: 100%;
     height: 100%;
     display: flex;
+    display: none;
     align-items: center;
     position: absolute;
 }
 
 #intro-bg img {
     height: calc(929px + var(--scalerpx)*1301);
-    top: calc(200px - var(--scalerpx)*176);
-    right: calc(108px - var(--scalerpx)*108);
+    /* top: calc(200px - var(--scalerpx)*176); */
+    /* right: calc(108px - var(--scalerpx)*108); */
+    /* The calculations above are based on handmade calculations.
+        The calculations below are guesswork.
+    */
+    height: calc(929px + var(--scalerpx)*1301);
+    top: clamp(24px, 160px - var(--scalerpx)*136, 160px);
+    /* right: calc(108px - var(--scalerpx)*108); */
+    /* height: calc(929px + var(--scalerpx)*1301);
+    top: max(0, 200px - var(--scalerpx)*176);*/
+    right: max(0px, 108px - var(--scalerpx)*108);
 }
 
 .cntner {
-    max-width: 1148px;
+    width: clamp(80vw, 1148px, 100%);
+    /* If 1148px > 100%, then use 100%.
+        If 1148px < 80vw, then use 80vw.
+    */
     padding: 0 24px;
     margin: 0 auto;
 }
 
 header {
-    margin-top: 54px;
-    margin-bottom: 120px;
+    margin-bottom: 7em;
     display: flex;
     align-items: center;
 }
 
 #logo {
-    height: calc(32px + var(--scalerpx)*8);
-    margin-right: 64px;
+    height: clamp(32px, 4.5vw, max(40px, 2.78vw));
+    margin-right: 4em;
 }
 
 #logo img {
@@ -98,7 +227,7 @@ nav {
 
 header ul {
     display: flex;
-    gap: 32px;
+    gap: 2em;
     align-items: center;
     list-style: none;
 }
@@ -114,9 +243,10 @@ a {
 
 a.big-btn {
     display: block;
-    min-width: 140px;
-    padding: 13px;
-    border-radius: 100px;
+    min-width: 8.75em;
+    /* padding: 13px; */
+    padding: 0.81em;
+    border-radius: 7em;
     border: 1.5px solid white;
     text-align: center;
     color: white;
@@ -133,39 +263,14 @@ main {
     text-align: center;
 }
 
-main p {
-    font-size: calc(1rem + var(--scalerrem)*0.3);
-}
-
-h1 {
-    font-size: calc(2.3rem + var(--scalerrem)*1.3);
-    /* font-size: max(2.3rem, 4vw); */
-}
-
-h1, h2, h3, h4 {
-    margin-bottom: 24px;
-    line-height: 120%;
-    /* border: 0.1px solid violet; */
-}
-
-h2 {
-    font-size: calc(1.7rem + var(--scalerrem)*0.7);
-}
-
-h3 {
-    font-size: calc(1.3rem + var(--scalerrem)*0.3);
-}
-
-p {
-    margin-bottom: 32px;
-    letter-spacing: 0.6px;
-    line-height: 160%;
-}
-
 #CTA {
     display: flex;
-    gap: 16px;
+    gap: 1em;
     justify-content: center;
+}
+
+span.br {
+    display: inline-block;
 }
 
 /****************** Sections part. Trying a grid layout. *************************/
