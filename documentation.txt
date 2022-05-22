@@ -48,3 +48,6 @@ May 20, 2022
     I used clamp and @media together. It makes the code better.
 
     TOO MUCH TIME USED.
+
+May 21, 2022
+    I've been thinking too much about big screens. Next time, I will try to fix the paddings and margins to px in phone sizes.

@@ -1,6 +1,9 @@
 :root {
     --scalerpx: calc((100vw - 375px) / 1065);
-    --scalerrem: calc((100vw - 375rem/16) * 16 / 1065);
+    --scalerem: calc((100vw - 375em/16) * 16 / 1065);
+    /* This was supposed to be for general use, especially for the headings.
+    However, there has been changes. This is still used in some parts.
+    */
 }
 
 * {
@@ -15,135 +18,8 @@ body {
     font-weight: 300;
     color: #4B5862;
     text-align: center;
-    font-size: max(1rem, 1.11vw);
-}
-
-body * {
-    border: 0.1px solid transparent;
-}
-
-/* **************** FONT SIZING ******************** */
-
-
-h1 {
-    font-size: 2em;
-    /* font-size: clamp(4vw, 3.6em, clamp(6vw, 2.5em, 9.5vw)); */
-    /* From 0 to 421px = 9.5vw = {0 to 40px}
-    From 421px to 667px = 2.5em = {40px}
-    From 667px to 960px = 6vw = {40px to 57.6px}
-    From 960px to 1440px = 3.6em = {57.6px}
-    From 1440px to inf = 4vw = {57.6px to inf}
-    */
-    /* If 1em = 32px (big):
-        From 0 to 842px = 9.5vw = {0 to 80px}
-        From 842px to 1333px = 2.5em = {80px}
-        From 1333px to 1920px = 6vw = {80px to 115.2px}
-        From 1920px to 2880px = 3.6em = {115.2px}
-        From 2880px to inf = 4vw = {115.2px to inf}
-    
-    */
-    /* font-size: clamp(3.6em + 1.8/90 * (100vw - 90em), 3.6em, 2em + 1.6/42*[100vw - 20em]); */
-    /* font-size: 32px; */
-    /* font-size: clamp(3.6em+1.8/90*[100vw - 90em], 3.6em, (42*(100vw))); */
-
-    /* font-size: calc(2em + 1.6/42*(100vw - 20em)); */
-    /* font-size: 2em; */
-    /* 
-    */
-    /* font-size: clamp(1.5em + 2vw, 2em, 1.25em + 3vw); */
-    /* font-size: 32px; */
-    /* font-size: calc(1.6em + 1vw); */
-    /* font-size: 32px; */
-} 
-/* wrong codes*/
-
-h1 {
-    font-size: clamp(2em, 4.68vw + 1em, 2.521em);
-    /* Assuming that the font zoom settings are not too high, this is good. If you think the font zoom settings of the phone is high, then reduce the slope. */
-}
-
-/* @media only screen and (min-width: 360px){
-    h1 {
-        font-size: clamp(2em, 1.3em + 2.8vw, 2.7em);
-    }
-    h1 {
-        font-size: clamp(2em, 1.427em + 2.545vw, 2.7em);
-        font-size: 40px;
-    }
-} */
-
-/* @media only screen and (min-width: 800px){
-    h1 {
-        font-size: clamp(2.7em, 2.25vw + 1.575em, max(3.6em, 4vw));
-    }
-} */
-
-@media only screen and (min-width: 520px) {
-    h1 {
-        font-size: clamp(2.521em, 2vw + 1.85em, 3em);
-    }
-}
-
-@media only screen and (min-width: 920px) {
-    h1 {
-        font-size: clamp(3em, 1.84vw + 1.94em, 3.6em);
-    }
-}
-
-h1, h2, h3, h4 {
-    margin-bottom: max(0.4em, 24px);
-    line-height: 120%;
-    /* border: 0.1px solid violet; */
-}
-
-h2 {
-    font-size: clamp(2.67vw, 2.4em, clamp(4vw, 1.67em, 6.33vw));
-    /* From 0 to 400px = 10vw = {0 to 40px}
-        From 400px to 667px = 2.5em = {40px}
-        From 667px to 960px = 6vw = {40px to 57.6px}
-        From 960px to 1440px = 3.6em = {57.6px}
-        From 1440px to inf = 4vw = {57.6px to inf}
-        UPDATE this.
-    */
-}
-
-h3 {
-    font-size: clamp(1.78vw, 1.6em, max(1.2em, 2.67vw));
-    /* font-size: clamp(1.78vw, 1.6em, clamp(2.67vw, 1.11em, 4.22vw)); */
-    /* From 0 to 400px = 10vw = {0 to 40px}
-        From 400px to 667px = 2.5em = {40px}
-        From 667px to 960px = 6vw = {40px to 57.6px}
-        From 960px to 1440px = 3.6em = {57.6px}
-        From 1440px to inf = 4vw = {57.6px to inf}
-        UPDATE this.
-    */
-}
-
-p {
-    margin-bottom: 2em;
-    /* letter-spacing: 0.6px; */
-    letter-spacing: 0.0375em;
-    line-height: 150%;
-    /* border: 0.1px solid black; */
-}
-
-main p {
-    /* font-size: calc(1rem + var(--scalerrem)*0.3); */
-    font-size: clamp(1em, 5.5vw, 1.3em);
-    letter-spacing: 0.03em;
-    
-}
-
-
-/* **************** INTRO LAYOUT ****************** */
-
-#intro {
-    color: white;
-    padding-top: 3.5em;
-    padding-bottom: 9.8em;
-    background-image: linear-gradient(to bottom, #FF8F70, #FF3D54);
-    border-radius: 0 0 0 7em;
-    overflow: hidden;
+    font-size: 1rem;
+    font-size: max(1rem, 0.667vw + 0.4rem);
 }
 
 @media only screen and (min-width: 992px) {
@@ -152,9 +28,78 @@ main p {
     }
 }
 
+body * {
+    border: 0.1px solid transparent;
+}
+
+/* **************** TEXT ******************** */
+
+h1 {
+    font-size: 2em;
+    font-size: clamp(2em, 4.68vw + 1em, 2.521em);
+    /* border: 0.1px solid green; */
+    /* Sweeps the font size from 2em to 2.521em from 342px to 520px */
+    /* I did this sweep as to fit as much h1 as possible in a phone screen */
+}
+
+h2 {
+    font-size: 1.6em;
+    font-size: clamp(1.5em, 1.75vw + 1.13em, 2.7em);
+    /* Sweeps the font size from 1.5em to 2.7em from 340px to 1440px */
+}
+
+h3 {
+    font-size: 1.3em;
+    font-size: clamp(1.2em, 1.16vw + 0.953em, 2em);
+    /* Sweeps the font size from 1.2em to 2em from 340px to 1440px */
+}
+
+@media only screen and (min-width: 520px) {
+    h1 {
+        font-size: 2.8em;
+        font-size: clamp(2.521em, 1.88vw + 1.91em, 3.6em);
+        /* Sweeps the font size from 2.521em to 3.6em from 520px to 1440px */
+    }
+}
+
+
+h1, h2, h3, h4 {
+    margin-bottom: max(0.4em, 24px);
+    line-height: 120%;
+    /* border: 0.1px solid violet; */
+}
+
+p {
+    margin-bottom: 32px;
+    letter-spacing: 0.038em;
+    line-height: 150%;
+    /* border: 0.1px solid black; */
+}
+
+main p {
+    font-size: 1.2em;
+    font-size: clamp(1.1em, 0.44vw + 0.9em, 1.3em);
+    letter-spacing: 0.03em;
+}
+
+
+/* **************** INTRO LAYOUT ****************** */
+
+#intro {
+    color: white;
+    /* padding-top: 3.5em; */
+    /* padding-bottom: 9.8em; */
+    padding-top: 56px;
+    padding-bottom: 157px;
+    background-image: linear-gradient(to bottom, #FF8F70, #FF3D54);
+    border-radius: 0 0 0 7em;
+    overflow: hidden;
+}
+
 @media only screen and (min-width: 600px) {
     #intro {
         background-image: linear-gradient(to right, #FF8F70, #FF3D54);
+        /* Layout decision based (visually) on the mockup. */
     }
 }
 
@@ -162,37 +107,29 @@ main p {
     width: 100%;
     height: 100%;
     display: flex;
-    display: none;
     align-items: center;
     position: absolute;
 }
 
 #intro-bg img {
     height: calc(929px + var(--scalerpx)*1301);
-    /* top: calc(200px - var(--scalerpx)*176); */
-    /* right: calc(108px - var(--scalerpx)*108); */
-    /* The calculations above are based on handmade calculations.
-        The calculations below are guesswork.
-    */
-    height: calc(929px + var(--scalerpx)*1301);
     top: clamp(24px, 160px - var(--scalerpx)*136, 160px);
-    /* right: calc(108px - var(--scalerpx)*108); */
-    /* height: calc(929px + var(--scalerpx)*1301);
-    top: max(0, 200px - var(--scalerpx)*176);*/
     right: max(0px, 108px - var(--scalerpx)*108);
+    /* Calculations based on mockup */
 }
 
 .cntner {
     width: clamp(80vw, 1148px, 100%);
-    /* If 1148px > 100%, then use 100%.
-        If 1148px < 80vw, then use 80vw.
+    /* If 1148px > 100%, then use 100%. (For use in smaller screens)
+        If 1148px < 80vw, then use 80vw. (For use in larger screens)
     */
     padding: 0 24px;
     margin: 0 auto;
 }
 
 header {
-    margin-bottom: 7em;
+    /* margin-bottom: 7em; */
+    margin-bottom: 102px;
     display: flex;
     align-items: center;
 }
@@ -214,7 +151,10 @@ nav {
     display: none;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 62rem) {
+    /* I think it's better to use rem or em when dealing with disappearing nav.
+        The user might have zoomed fonts, so the nav might be crammed if the media query is based on px.
+    */
     nav {
         display: block;
     }
@@ -242,6 +182,7 @@ a {
 }
 
 a.big-btn {
+    /* font-size: 1rem; */
     display: block;
     min-width: 8.75em;
     /* padding: 13px; */
@@ -258,36 +199,40 @@ a.big-btn.solid {
     color: #FF525D;
 }
 
-
 main {
     text-align: center;
 }
 
+span.br {
+    display: inline-block;
+    /* border: 0.1px solid black; */
+}
+
 #CTA {
     display: flex;
+    flex-wrap: wrap;
     gap: 1em;
     justify-content: center;
 }
 
-span.br {
-    display: inline-block;
-}
 
 /****************** Sections part. Trying a grid layout. *************************/
 
 :is(#sect1, #sect3) :is(h1, h2, h3, h4) {
-    color: 	#1F3F5B;
+    color: #1F3F5B;
 }
 
 :is(#sect1, #sect2, #sect3) p {
-    margin-bottom: min(48px + var(--scalerpx)*32, 80px);
+    /* margin-bottom: clamp(3em, 3em + var(--scalerem)*2, 5em); */
+    margin-bottom: 48px;
+    margin-bottom: 3rem;
     /* 48 to 80 */
 }
 
 #sect1 {
-    padding-top: min(110px + var(--scalerpx)*50, 160px);
+    padding-top: clamp(6.8em, 6.8em + var(--scalerem)*3.2, 10em);
     overflow: hidden;
-    padding-bottom: 260px;
+    padding-bottom: 16.25em;
 }
 
 #sect1 .text p:last-of-type {
@@ -295,7 +240,9 @@ span.br {
 }
 
 #sect1 h2 {
-    margin-bottom: min(48px + var(--scalerpx)*72, 120px);
+    /* margin-bottom: clamp(3em, 3em + var(--scalerem)*4.5, 7.5em); */
+    margin-bottom: 48px;
+    margin-bottom: 3em;
     /* 48 to 120 */
 }
 
@@ -316,6 +263,7 @@ span.br {
 
 
 .art-img {
+    display: none;
     margin-bottom: 48px;
     /* 48 to 80 */
 }
