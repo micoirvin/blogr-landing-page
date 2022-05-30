@@ -51,3 +51,20 @@ May 20, 2022
 
 May 21, 2022
     I've been thinking too much about big screens. Next time, I will try to fix the paddings and margins to px in phone sizes.
+
+May 23, 2022
+    Fix the h2, so that the sect2 h2 will fit.
+    Need to fix padding of section 2.
+
+May 24, 2022
+    Also need to fix padding bottom of section 1.
+
+    I learned that a more specific element style cannot be overridden by a less specific element style occuring inside a media query near the end of the page.
+
+    The things are pretty much done except dropdowns, links, hovers. I used a scaler variable today. Should've made my life a little easier if I used it earlier.
+
+May 25, 2022
+    I think I tidied up the code. I put important labels. I also finished the footer and dropdown (for desktop).
+
+May 26 & May 30, 2022
+    JavaScript functionalities - mobile nav

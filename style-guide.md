@@ -18,9 +18,9 @@ The designs were created to the following widths:
 ### Neutral
 
 - White (text): hsl(0, 0%, 100%)
-- Grayish blue (footer text): hsl(240, 2%, 79%)
+- Grayish blue (footer text): hsl(240, 2%, 79%) = C8C8CB
 - Very dark grayish blue (body copy): hsl(207, 13%, 34%) = 4B5862
-- Very dark black blue (footer background): hsl(240, 10%, 16%)
+- Very dark black blue (footer background): hsl(240, 10%, 16%) = 25252D
 
 ### Gradient
 
@@ -31,8 +31,8 @@ Background gradient - Intro/CTA mobile nav:
 
 Background gradient - body:
 
-- Very dark gray blue: hsl(237, 17%, 21%) = 	2C2D3F
-- Very dark desaturated blue: hsl(237, 23%, 32%)
+- Very dark gray blue: hsl(237, 17%, 21%) = 2C2D3F
+- Very dark desaturated blue: hsl(237, 23%, 32%) = 3F4164
 
 ## Typography
 

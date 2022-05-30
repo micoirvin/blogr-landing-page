@@ -1,9 +1,12 @@
+/* ******************** GENERAL ********************* */
+
 :root {
     --scalerpx: calc((100vw - 375px) / 1065);
-    --scalerem: calc((100vw - 375em/16) * 16 / 1065);
+    --scalerrem: calc((100vw - 375rem/16) * 16 / 1065);
     /* This was supposed to be for general use, especially for the headings.
     However, there has been changes. This is still used in some parts.
     */
+    --pcscalerpx: calc((100vw - 992px) / 448); 
 }
 
 * {
@@ -19,10 +22,10 @@ body {
     color: #4B5862;
     text-align: center;
     font-size: 1rem;
-    font-size: max(1rem, 0.667vw + 0.4rem);
+    font-size: max(1rem, 0.444vw + 0.6rem);
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 62rem) {
     body {
         text-align: left;
     }
@@ -37,15 +40,14 @@ body * {
 h1 {
     font-size: 2em;
     font-size: clamp(2em, 4.68vw + 1em, 2.521em);
-    /* border: 0.1px solid green; */
     /* Sweeps the font size from 2em to 2.521em from 342px to 520px */
     /* I did this sweep as to fit as much h1 as possible in a phone screen */
 }
 
 h2 {
     font-size: 1.6em;
-    font-size: clamp(1.5em, 1.75vw + 1.13em, 2.7em);
-    /* Sweeps the font size from 1.5em to 2.7em from 340px to 1440px */
+    font-size: clamp(1.5em, 1.31vw + 1.22em, 2.4em);
+    /* Sweeps the font size from 1.5em to 2.4em from 340px to 1440px */
 }
 
 h3 {
@@ -62,18 +64,18 @@ h3 {
     }
 }
 
+/* Note: Next time, fix your scaler variables first to avoid hand-calculating the fluid typography. Anyway, done is done, so I don't wanna edit it anymore. */
 
 h1, h2, h3, h4 {
     margin-bottom: max(0.4em, 24px);
     line-height: 120%;
-    /* border: 0.1px solid violet; */
+    font-weight: 600;
 }
 
 p {
     margin-bottom: 32px;
     letter-spacing: 0.038em;
     line-height: 150%;
-    /* border: 0.1px solid black; */
 }
 
 main p {
@@ -87,13 +89,9 @@ main p {
 
 #intro {
     color: white;
-    /* padding-top: 3.5em; */
-    /* padding-bottom: 9.8em; */
-    padding-top: 56px;
-    padding-bottom: 157px;
+    padding-bottom: 160px;
     background-image: linear-gradient(to bottom, #FF8F70, #FF3D54);
-    border-radius: 0 0 0 7em;
-    overflow: hidden;
+    border-radius: 0 0 0 100px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -106,98 +104,298 @@ main p {
 #intro-bg {
     width: 100%;
     height: 100%;
+    border-radius: inherit;
     display: flex;
     align-items: center;
     position: absolute;
+    overflow: hidden;
 }
 
 #intro-bg img {
-    height: calc(929px + var(--scalerpx)*1301);
-    top: clamp(24px, 160px - var(--scalerpx)*136, 160px);
-    right: max(0px, 108px - var(--scalerpx)*108);
+    height: 300%;
+    height: clamp(929px, 929px + var(--scalerpx)*1301, 3000px);
+    top: clamp(-64px, 120px - var(--scalerpx)*184, 120px);
+    left: clamp(-84px, -84px + var(--scalerpx)*234, 150px);
     /* Calculations based on mockup */
 }
 
 .cntner {
     width: clamp(80vw, 1148px, 100%);
-    /* If 1148px > 100%, then use 100%. (For use in smaller screens)
-        If 1148px < 80vw, then use 80vw. (For use in larger screens)
+    /* If 1148px > 100%, then use 100%. (For smaller screens)
+        If 1148px < 80vw, then use 80vw. (For  larger screens)
     */
     padding: 0 24px;
     margin: 0 auto;
 }
 
 header {
-    /* margin-bottom: 7em; */
-    margin-bottom: 102px;
+    margin-top: 56px;
+    margin-bottom: 110px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-#logo {
-    height: clamp(32px, 4.5vw, max(40px, 2.78vw));
-    margin-right: 4em;
+.logo {
+    height: clamp(32px, 4.5vw, 40px);
+    margin-right: 64px;
 }
 
-#logo img {
+.logo img {
     height: 100%;
 }
 
+/* ******************** Navigation, burger nav ***************** */
+
+.burgr-box {
+    position: absolute;
+    width: min(20rem, 100%);
+    right: 0;
+    top: 0;
+    padding-top: 0.4rem;
+    display: grid;
+    justify-items: end;
+}
+
+#burgr-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 32px 24px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
+    margin-top: 32px;
+    z-index: 99;
+}
+
 nav {
-    display: none;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 0.5px solid #e4e4e4;
 }
 
-#rght-nav {
-    display: none;
+nav > ul > li {
+    margin-bottom: 24px;
 }
 
-@media only screen and (min-width: 62rem) {
-    /* I think it's better to use rem or em when dealing with disappearing nav.
-        The user might have zoomed fonts, so the nav might be crammed if the media query is based on px.
-    */
-    nav {
-        display: block;
-    }
 
-    #rght-nav {
-        display: block;
-        margin-left: auto;
-    }
+#rght-nav > ul > li {
+    margin-bottom: 16px;
 }
 
-header ul {
-    display: flex;
-    gap: 2em;
-    align-items: center;
+:is(nav, #rght-nav) > ul > li:last-of-type {
+    margin-bottom: 0;
+}
+
+ul {
     list-style: none;
 }
 
-a { 
+a {
+    font-family: Ubuntu, Arial, Helvetica, sans-serif;
+    font-weight: 400;
     text-decoration: none;
-    color: white;
+    color: #1F3F5B;
+}
+
+a:focus {
+    color: #4B5862;
+}
+
+.drpdwn-icon i {
+    color: #FF525D;
 }
 
 .drpdwn {
     display: none;
 }
 
-a.big-btn {
-    /* font-size: 1rem; */
+ul.drpdwn-list {
+    padding: 24px;
+    margin-top: 24px;
+    background-color: #efeff1;
+    border-radius: 8px;
+}
+
+ul.drpdwn-list a {
+    color: #4B5862;
     display: block;
+}
+
+ul.drpdwn-list li {
+    margin-bottom: 16px;
+}
+
+ul.drpdwn-list li:last-of-type {
+    margin-bottom: 0;
+}
+
+a.big-btn {
+    display: inline-block;
     min-width: 8.75em;
-    /* padding: 13px; */
+    width: 8.75em;
     padding: 0.81em;
     border-radius: 7em;
     border: 1.5px solid white;
     text-align: center;
     color: white;
+    font-family: Ubuntu, Arial, Helvetica, sans-serif;
     font-weight: 700;
 }
 
-a.big-btn.solid {
+a.big-btn.solid, a.big-btn:hover, a.big-btn:focus {
+    border-color: transparent;
     background-color: white;
-    color: #FF525D;
+    color: #FF7A85;
+    text-decoration: none;
 }
+
+a.big-btn.solid:hover, a.big-btn.solid:focus {
+    background-color: #FF7A85;
+    color: white;
+}
+
+header a.big-btn.solid {
+    background-color: #FF525D;
+    color: white;
+    /* mobile */
+}
+
+:is(header) a.big-btn.solid:hover, a.big-btn.solid:focus {
+    border-color: #FF7A85;
+    background-color: white;
+    color: #FF7A85;
+    /* mobile */
+}
+
+
+@media only screen and (min-width: 62rem) {
+    /* I think it's better to use rem or em when dealing with disappearing nav.
+        The user might have zoomed fonts, so the nav might be crammed if the media query is based on px.
+        */
+    .burgr-box {
+        flex-grow: 1;
+        position: relative;
+        display: block;
+        padding: 0;
+    }
+        
+    #burgr-icon {
+        display: none;
+    }
+
+    #burgr-menu {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        background-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        position: relative;
+    }
+
+    nav, #rght-nav {
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+    
+    :is(nav, #rght-nav) > ul {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+        height: 100%;
+    }
+
+    nav {
+        border: none;
+    }
+
+    :is(nav, #rght-nav) > ul > li {
+        margin: 0;
+    }
+    
+    a {
+        color: white;
+    }
+    
+    .drpdwn-icon i {
+        color: white;
+    }
+
+    a:hover, a:focus {
+        color: white;
+        text-decoration: underline;
+    }
+    
+    .drpdwn-box:hover .drpdwn {
+        display: block;
+    }
+    
+    .drpdwn-box:hover .drpdwn-icon i {
+        transform: rotate(180deg);
+    }
+    
+    .drpdwn-box:hover > a {
+        text-decoration: underline;
+    }
+    
+    .drpdwn-icon {
+        cursor: pointer;
+    }
+    
+    .drpdwn {
+        display: none;
+        position: absolute;
+        padding-top: 24px;
+    }
+    
+    ul.drpdwn-list {
+        display: block;
+        min-width: 168px;
+        margin: 0;
+        padding: 36px 24px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
+        z-index: 99;
+    }
+    
+    ul.drpdwn-list a {
+        color: #2C2D3F;
+        display: block;
+    }
+    
+    ul.drpdwn-list li {
+        margin-bottom: 1em;
+    }
+    
+    ul.drpdwn-list li:last-of-type {
+        margin-bottom: 0;
+    }
+    
+    .drpdwn-list li a:hover {
+        font-weight: 700;
+        text-decoration: none;
+    }
+    
+    header a.big-btn.solid {
+        background-color: white;
+        color: #FF525D;
+    }
+
+    :is(header) a.big-btn.solid:hover, a.big-btn.solid:focus {
+        border-color: transparent;
+        background-color: #FF7A85;
+        color: white;
+    }
+
+}
+
 
 main {
     text-align: center;
@@ -205,147 +403,312 @@ main {
 
 span.br {
     display: inline-block;
-    /* border: 0.1px solid black; */
 }
 
 #CTA {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 16px;
     justify-content: center;
 }
 
 
-/****************** Sections part. Trying a grid layout. *************************/
+/****************** SECTIONS LAYOUT *************************/
+
+/* ************* General **************** */
 
 :is(#sect1, #sect3) :is(h1, h2, h3, h4) {
     color: #1F3F5B;
 }
 
 :is(#sect1, #sect2, #sect3) p {
-    /* margin-bottom: clamp(3em, 3em + var(--scalerem)*2, 5em); */
-    margin-bottom: 48px;
-    margin-bottom: 3rem;
+    margin-bottom: 64px;
+    margin-bottom: clamp(48px, 48px + var(--scalerpx)*32, 80px);
     /* 48 to 80 */
 }
 
-#sect1 {
-    padding-top: clamp(6.8em, 6.8em + var(--scalerem)*3.2, 10em);
-    overflow: hidden;
-    padding-bottom: 16.25em;
-}
-
-#sect1 .text p:last-of-type {
+:is(#sect1, #sect2, #sect3) .text p:last-of-type {
     margin-bottom: 0;
 }
 
-#sect1 h2 {
-    /* margin-bottom: clamp(3em, 3em + var(--scalerem)*4.5, 7.5em); */
-    margin-bottom: 48px;
-    margin-bottom: 3em;
-    /* 48 to 120 */
-}
-
-.text-art-wrap div {
+.text-art-wrap > div {
     margin-left: auto;
     margin-right: auto;
 }
 
 .text {
-    /* border: 0.1px solid blue; */
-    max-width: 600px;
+    max-width: 38rem;
 }
 
-.art-img {
+.art-img.mob {
+    display: flex;
     max-width: 400px;
-    /* border: 0.1px solid blue; */
-}
-
-
-.art-img {
-    display: none;
     margin-bottom: 48px;
-    /* 48 to 80 */
 }
 
 .art-img img {
     width: 100%;
 }
 
-/* .art-img.pc img {
-    position: absolute
-} */
-
 .art-img.pc {
     display: none;
 }
 
-/* .cntner {
-    border: 0.1px solid black;
-}  */
+/* *********** Section 1 *************** */
 
-@media only screen and (min-width: 992px) {
+#sect1 {
+    padding-top: 110px;
+    padding-top: clamp(110px, 110px + var(--scalerpx)*50, 160px);
+    overflow: hidden;
+    padding-bottom: 260px;
+}
+
+#sect1 h2 {
+    margin-bottom: 48px;
+    margin-bottom: clamp(48px, 48px + var(--scalerrem)*4.5, 120px);
+    /* Intentional em scaling because of my em media query */
+}
+
+/* ********** Section 2 **************** */
+
+#sect2 {
+    color: #dddddd;
+}
+
+#sect2 h2 {
+    color: white;
+}
+
+#sect2, #sect2-bg {
+    background-image: linear-gradient(to bottom, #2C2D3F, #3F4164);
+    border-radius: 0 100px 0 100px;
+}
+
+#sect2-bg {
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+#sect2-bg img {
+    width: 595px;
+    top: -230px;
+}
+
+#sect2 .text {
+    padding-bottom: 110px;
+}
+
+#sect2 .art-img.mob {
+    height: 180px;
+    /* 280 to 448 -> 100 to 260 */
+    height: clamp(100px, 100vw - 188px, 260px);
+    align-items: flex-end;
+}
+
+/* ******* Section 3 ****************** */
+
+#sect3 .art-img.mob {
+    max-width: 520px;
+}
+
+#sect3 {
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+
+
+/* **************** SECTIONS LAYOUT, PC ********************* */
+
+@media only screen and (min-width: 62rem) {
+    
+    /* *********** General ***************** */
+
+    .text {
+        max-width: none;
+    }
+
+    .text-art-wrap {
+        display: grid;
+    }
+
+    .art-img.mob {
+        display: none;
+    }
+    
+    .art-img.pc {
+        display: block;
+        width: 100%;
+    }
+
+    .art-img.pc img {
+        position: absolute;
+    }
+
+    :is(#sect2, #sect3) .text-art-wrap {
+        grid-template-columns: 1fr clamp(80px, 8vw, 110px) 50%;
+    }
+    
+    :is(#sect2, #sect3) .text {
+        grid-column: 3;
+    }
+
+    :is(#sect2, #sect3) .art-img.pc {
+        grid-column: 1;
+    }
+    
+    /* *********** Section 1 **************** */
+
     #sect1 {
-        border: 0.1px solid black;
+        padding-bottom: 180px;
+        padding-bottom: clamp(130px, 130px + var(--pcscalerpx)*130, 260px);
+        /* 130 to 260 from 992 to 1440*/
     }
 
     #sect1 h2 {
         text-align: center;
     }
 
-    .art-img.mob {
-        display: none;
+    #sect1 .text-art-wrap {
+        grid-template-columns: 50% clamp(80px, 80px + var(--pcscalerpx)*30, 110px) 1fr;
     }
 
-    .text-art-wrap {
-        border: 0.1px solid black;
-        display: grid;
-        grid-template-columns: 50% clamp(70px, 7vw, 100px) 1fr;
-    }
-
-    .text {
-        /* border: 0.1px solid black; */
+    #sect1 .text {
         grid-column: 1;
     }
 
-    .art-img.pc {
-        /* border: 0.1px solid black; */
-        display: block;
+    #sect1 .art-img.pc {
         grid-column: 3;
-        width: 100%;
     }
 
-    .art-img.pc img {
-        position: absolute;
-        /* width: clamp(600px, 700px + 0.5*(100vw - 1240px), 800px); */
-        width: clamp(550px, 56vw, 800px);
-        height: auto;
-        top: clamp(-240px, -16.7vw, -160px);
+    #sect1 .art-img.pc img {
+        width: 800px;
+        /* width: clamp(550px, 69.2vw - 136px, 860px); idk why this. don't erase yet */
+        width: clamp(600px, 58vw + 24.3px, 860px);
+        top: -150px;
+        top: clamp(-235px, -19vw + 38px, -150px);
     }
 
 
+    /* ********** Section 2 ****************** */
 
-
-    /* .text-art-wrap {
-        gap: 80px;
+    #sect2-bg, #sect2 {
         justify-content: left;
+        background-image: linear-gradient(to right, #2C2D3F, #3F4164);
+    }
+
+    #sect2-bg img {
+        width: 1300px;
+        width: clamp(1013px, 52.4vw + 258px, 1600px);
+        /* width from 1440 to 2560 */
+        top: -650px;
+        top: clamp(-809px, -26.8vw - 123px, -509px);
+        left: -216px;
+    }
+
+    #sect2 .text {
+        padding-top: 110px;
     }
     
-    .text {
-        width: 50%;
-        order: 1;
+    #sect2 .art-img.pc img {
+        width: 430px;
+        width: clamp(400px, 46.2vw - 58.3px, 472px);
+        top: -48px;
     }
 
-    .art-img {
-        order: 2;
+    /* ************** Section 3 **************** */
+
+    #sect3 {
+        padding-top: 110px;
+        margin-bottom: 100px;
+        margin-bottom: clamp(100px, 100px + var(--pcscalerpx)*100, 200px);
     }
 
-    #sect1 .art-img {
-        bottom: 80px;
-    } */
+    #sect3 .text {
+        padding-top: 100px;
+        padding-top: clamp(80px, 80px + var(--pcscalerpx)*112, 192px);
+    }
+
+    #sect3 .art-img.pc img {
+        width: 750px;
+        width: clamp(600px, 600px + var(--pcscalerpx)*288, 888px);
+        right: 0;
+    }
 
 }
 
 
+/* ***************** FOOTER ************************ */
+
+footer {
+    color: #C8C8CB;
+    background-color: #25252D;
+    padding: 72px 0;
+}
+
+footer a {
+    color: #c8c8c8;
+}
+
+footer .logo {
+    margin-right: 0;
+    margin-bottom: 72px;
+}
+
+.footr-item {
+    margin-bottom: 48px;
+}
+
+footer em a {
+    margin-bottom: 32px;
+    display: block;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+}
+
+footer li {
+    margin-bottom: 0.5em;
+}
+
+@media only screen and (min-width: 45rem) {
+    footer .cntner {
+        text-align: left;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        /* justify-items: center; */
+    }
+
+    .footr-item {
+        grid-column: auto;
+        margin-left: 48px;
+    }
+
+    .logo.footr-item {
+        grid-row: 2;
+        grid-column: 2;
+    }
+}
+
+@media only screen and (min-width: 71rem) {
+    footer .cntner {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .footr-item {
+        margin-left: 0;
+    }
+
+    .logo.footr-item {
+        grid-row: 1;
+        grid-column: 1;
+    }
+}
+
+
 .attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+.attribution a { color: hsl(228, 45%, 44%); text-decoration: underline; }
